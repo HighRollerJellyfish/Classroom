@@ -9,6 +9,7 @@ angular.module('classroom', [
   'ui.router',
   'ui.bootstrap'
 ])
+
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/syllabus');
   $stateProvider
