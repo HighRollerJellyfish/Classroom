@@ -150,4 +150,3 @@ INSERT INTO `grades` (`title`, `student`,`description`, `content`, `start_date`,
 
 COMMIT;
 
-
