@@ -11,6 +11,9 @@ angular.module('classroom', [
   'classroom.AuthFactory',
   'classroom.LessonService',
   'classroom.GradeService',
+  'classroom.ClassService',
+  'classroom.AssignmentService',
+  'classroom.EventService',
   'classroom.AttendanceService',
   'classroom.syllabus',
   'ui.router',
@@ -18,7 +21,7 @@ angular.module('classroom', [
   'textAngular'
 ])
 .controller('LogoutController', ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
-  
+
   /**
   This function logs out the currentUser by deleting their info and jwtToken from the browser.
   @method logout
@@ -27,7 +30,8 @@ angular.module('classroom', [
   $scope.logout = function () {
     delete $rootScope.currentUser;
     delete localStorage.jwtToken;
-    $state.go('login');
+    //$state.go('login');
+    window.location.reload('#/login');
   };
 }])
 
@@ -78,6 +82,13 @@ angular.module('classroom', [
 
 .run(['$rootScope', '$state', 'Auth', function ($rootScope, $state, Auth) {
 
+  $rootScope.checkStateRoute = function(state) {
+    if($state.is(state)) {
+      return true;
+    }
+    return false;
+  };
+
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
     var requireLogin = toState.data.requireLogin;
     // check if user is logged in
@@ -95,7 +106,9 @@ angular.module('classroom', [
         // the user is not logged in, so send them to the login page
         event.preventDefault();
         console.log("User must be logged in to view this page");
-        $state.go('login');
+        //$state.go('login');
+        window.location.replace('#/login');
+        location.reload();
       }
     }
   });
