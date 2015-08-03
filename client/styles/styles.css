@@ -6,26 +6,25 @@
   font-size: 100%;
 }
 
+.grades {
+  height: 75vh;
+}
 
+.login-background {
+  background-image: url('http://orig15.deviantart.net/b927/f/2014/279/1/8/school_classroom__late_afternoon__by_enigma_xiii-d801u9q.png');
+  background-size: cover;
+}
 
+.login-form {
+  opacity: .8;
+}
 
+.classChoice {
+  display: inline-block;
+  width: 30vw;
+  float: right;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#gradeTitle {
+  display: inline-block;
+}
